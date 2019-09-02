@@ -1,0 +1,7 @@
+{
+  "name": "alcoholApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

@@ -1,0 +1,19 @@
+page-home {
+
+}
+
+ion-modal.inset-modal {
+  background-color: rgba(0, 0, 0, .5) !important;
+  transition: opacity .25s ease-in-out;
+  padding: 30px 30px;
+}
+
+.myview{
+  background-image: url('https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.example-center {
+  text-align: center;
+}
