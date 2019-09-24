@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { FormBuilder, FormGroup, FormControl, NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, NgForm, Validators } from '@angular/forms';
 
-import { TabsPage } from '../tabs/tabs';
+// import { TabsPage } from '../tabs/tabs';
+import { HomePage } from '../home/home'
 import { AuthorizationProvider } from '../../providers/authorization/authorization';
 
 @IonicPage()
@@ -12,31 +13,47 @@ import { AuthorizationProvider } from '../../providers/authorization/authorizati
 })
 export class SignupPage {
 
-backgrounds = [
-    'assets/imgs/background-1.jpg',
-    'assets/imgs/background-2.jpg',
-    'assets/imgs/background-3.jpg',
-    'assets/imgs/background-4.jpg'
-  ];
-  public loginForm: any;
+  signupForm: FormGroup;
+  signupLoading: boolean = false;
 
-  signupForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
-  });
-
-  constructor(public formBuilder: FormBuilder,
+  constructor(public navCtrl: NavController,
+              public formBuilder: FormBuilder,
               public navctrl: NavController,
-              public authService: AuthorizationProvider) {}
+              public authService: AuthorizationProvider) {
+    this.setForms();
+  }
+
+  setForms() {
+    this.signupForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      username: ['', Validators.required]
+    });
+  }
+
 
   ionViewDidLoad() {}
 
-  onSignup(form: NgForm) {
-    const email = form.value.email;
-    const password = form.value.password;
-    this.authService.signupUser(email, password);
-    this.navctrl.setRoot(TabsPage);
+  signup() {
+    if (this.signupForm.invalid) return;
+
+    let user = this.signupForm.value;
+
+    this.signupLoading = true;
+
+    this.authService.signupUser(user).then((res) => {
+      this.authService.signinUser(user).then((res) => {
+        this.navCtrl.setRoot(HomePage);
+      }, (rej) => {
+        this.signupLoading = false;
+      });
+    }, (rej) => {
+      this.signupLoading = false;
+    });
   }
+
 
   goBack() {
     this.navctrl.pop();

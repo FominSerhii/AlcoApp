@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
-import { FormBuilder, FormGroup, FormControl, NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, NgForm, Validators } from '@angular/forms';
 
-import { TabsPage } from '../tabs/tabs';
+// import { TabsPage } from '../tabs/tabs';
+import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
 import { AuthorizationProvider } from '../../providers/authorization/authorization';
 
@@ -14,32 +15,40 @@ import { AuthorizationProvider } from '../../providers/authorization/authorizati
 export class SigninPage {
 
   signupPage: SignupPage;
-
-
-  backgrounds = [
-    'assets/imgs/background-1.jpg',
-    'assets/imgs/background-2.jpg',
-    'assets/imgs/background-3.jpg',
-    'assets/imgs/background-4.jpg'
-  ];
-  public loginForm: any;
-
-  signinForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
-  });
+  signinForm: FormGroup;
+  signinLoading: boolean = false;
 
   constructor(public formBuilder: FormBuilder,
               public navctrl: NavController,
-              public authService: AuthorizationProvider) {}
+              public authService: AuthorizationProvider
+  ) {
+    this.setForms();
+  }
 
   ionViewDidLoad() {}
 
-  onSignin(form: NgForm) {
-    const email = form.value.email;
-    const password = form.value.password;
-    this.authService.signinUser(email, password);
-    this.navctrl.setRoot(TabsPage);
+  setForms() {
+    this.signinForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  onSignin() {
+    if (this.signinForm.invalid) return;
+
+    let user = this.signinForm.value;
+
+    this.signinLoading = true;
+
+    this.authService.signinUser(user).then((res) => {
+      this.signinLoading = false;
+
+      this.navctrl.setRoot(HomePage);
+    }, (rej) => {
+      this.signinLoading = false;
+    });
+
   }
 
   goBack() {

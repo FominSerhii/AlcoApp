@@ -2,17 +2,17 @@
   <ion-navbar>
     <ion-buttons end>
       <button ion-button icon-only [navPush]='addPlacePage'>
-        <ion-icon name='add'></ion-icon>
+        <ion-icon name='pin'></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>Home</ion-title>
+    <ion-title>ГОЛОВНА СТОРІНКА</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="myview">
 
 
-<ion-row>
+<!-- <ion-row>
   <ion-col width-50 style="text-align: center;">
     <button ion-button round outline *ngIf="authService.user | async">{{ (authService.user | async)?.email }}</button>
   </ion-col>
@@ -23,52 +23,63 @@
     <button ion-button round (click)="onLogout()" *ngIf="authService.user | async">Logout</button>
   </ion-col>
 </ion-row>
+ -->
 
-<ion-row>
-  <ion-col width-50 style="text-align: center;">
-    <button ion-button round (click)="openDialog()">Show law</button>
-  </ion-col>
-</ion-row>
 
-  <ion-card>
-    <button ion-button round full (click)="updateData()">Check alcohol level</button>
+  <ion-card class="card">
+    <button class="check" ion-button round full (click)="updateData()">Перевірка рівня алкоголю</button>
     <ion-card>
-      <ion-card-header>
+      <!-- <ion-card-header>
         Diogram
-      </ion-card-header>
+      </ion-card-header> -->
       <ion-card-content>
         <canvas #pieCanvas></canvas>
       </ion-card-content>
     </ion-card>
   </ion-card>
 
+  <div>
+    <img class="img" src="assets/imgs/cars.jpg" height="60" width="350">
+  </div>
+
+  <!--   <div>
+      <img class="img2" src="assets/imgs/машина.png" height="60">
+    </div> -->
+
 <ion-card *ngFor="let card of cards" class="adv-map">
     <div class="map-image">
       <img [src]="card.imageUrl">
-      <ion-fab right top>
-        <button ion-fab class="fab-map pop-in" (click)="seeInMap(card)">
-        <ion-icon name='pin'></ion-icon>
-      </button>
-      </ion-fab>
     </div>
     <ion-item *ngFor="let place of card.places" (click)="placeTapped(place)">
       <ion-icon color="subtle" large item-start [name]='place.icon'></ion-icon>
       <h2>{{place.name}}</h2>
       <p>{{place.address}}</p>
     </ion-item>
-    <ion-item actions>
+<!--     <ion-item actions>
       <span item-start ion-text color="secondary" class="item-bold">{{card.ETA}}</span>
       <span item-start ion-text color="subtle">{{card.distance}}</span>
       <button ion-button color="primary" clear item-end icon-left (click)="getDirections(card)">
       <ion-icon name='navigate'></ion-icon>
       Start
     </button>
-    </ion-item>
+    </ion-item> -->
   </ion-card>
+
+  <button color="danger" ion-button round (click)="openDialog()">Закон</button>
+
+  <ion-fab right bottom>
+    <button ion-fab color="light"><ion-icon name="arrow-dropleft"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab><ion-icon name="settings"></ion-icon></button>
+      <button ion-fab><ion-icon name="albums"></ion-icon></button>
+      <button ion-fab><ion-icon name="chatbubbles"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
 
 </ion-content>
 
-<ion-footer>
+<!-- <ion-footer>
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -80,3 +91,4 @@
     </ion-row>
   </ion-grid>
 </ion-footer>
+ -->

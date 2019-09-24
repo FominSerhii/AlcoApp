@@ -2,8 +2,12 @@ page-add-place {
 
 }
 
-.view {
-  background-image: url('https://images.pexels.com/photos/1906794/pexels-photo-1906794.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+.bg {
   background-repeat: no-repeat;
   background-size: cover;
+  // background-color: #DCDCDC !important;
+}
+
+ion-item {
+	background-color: transparent !important;
 }

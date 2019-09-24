@@ -9,11 +9,71 @@ ion-modal.inset-modal {
 }
 
 .myview{
-  background-image: url('https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  // background-image: url('https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
   background-repeat: no-repeat;
   background-size: cover;
+
 }
 
 .example-center {
   text-align: center;
 }
+
+
+ion-card {
+	border-radius: 21px !important;
+	background-color: transparent !important;
+	box-shadow: none !important;
+}
+
+.check {
+	margin-top: 0px;
+}
+
+ion-header {
+
+  .toolbar-background {
+    // background: #DCDCDC;
+    border: none !important;
+  }
+  .toolbar-title {
+    color: black;
+  }
+}
+
+.law {
+	background-color: red;
+}
+
+.dtp {
+	margin-top: -150px;
+
+	height: 50% ;
+	width: 350px;
+	background-image: url('/assets/imgs/120 350.jpg');
+}
+
+.img {
+	z-index: 1;
+	position: absolute;
+	// margin-top:50px;
+	margin-top: -95px;
+}
+
+.img2 {
+	z-index: 1;
+	position: absolute;
+	// margin-top:50px;
+	margin-top: -95px;
+	margin-left: 28px;
+}
+
+
+.card {
+	position: relative;
+	z-index: 100;
+}
+
+
+
+

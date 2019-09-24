@@ -1,14 +1,14 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Add a place</ion-title>
+    <ion-title>ДОДАТИ МІСЦЕ</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="view">
+<ion-content padding class="bg">
   <form #f="ngForm" (ngSubmit)="onSubmit(f)">
     <ion-list>
       <ion-item>
-        <ion-label fixed>Label</ion-label>
+        <ion-label fixed>Назва</ion-label>
         <ion-input
           type="text"
           placeholder="I'm here . . ."
@@ -17,7 +17,7 @@
           required></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label floating>Short Description</ion-label>
+        <ion-label floating>Короткий опис</ion-label>
         <ion-textarea
           name="description"
           ngModel
@@ -35,7 +35,7 @@
             icon-left
             (click)="onLocate()">
             <ion-icon name="locate"></ion-icon>
-            Locate me
+            Знайти мене
             </button>
         </ion-col>
         <ion-col>
@@ -47,18 +47,18 @@
             icon-left
             (click)="onOpenMap()">
             <ion-icon name="map"></ion-icon>
-            Select on Map
+            Вибрати на карті
             </button>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <p>Selected Place . . .</p>
+          <p>Вибране місце ...</p>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col text-center>
-          <h2>Take a photo</h2>
+          <h2>Зробити фото</h2>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -71,7 +71,7 @@
             type="button"
             (click)="onTakePhoto()">
             <ion-icon name="camera"></ion-icon>
-            Open Camera
+            Відкрити камеру
             </button>
         </ion-col>
       </ion-row>
@@ -89,7 +89,7 @@
             round
             type="submit"
             [disabled]="!f.valid">
-            Add this Place
+            Додати це місце
             </button>
         </ion-col>
       </ion-row>

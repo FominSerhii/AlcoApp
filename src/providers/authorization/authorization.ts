@@ -11,35 +11,70 @@ export class AuthorizationProvider {
   token: string;
   user: Observable<firebase.User>;
   userDetails: firebase.User = null;
+  private usersRef = firebase.database().ref('/users');
+  private infoRef = firebase.database().ref('.info/connected');
+  public currentUser: firebase.User;
+
 
   constructor(private firebaseAuth: AngularFireAuth) {
-    this.user = firebaseAuth.authState;
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
+
+    this.firebaseAuth.authState.subscribe(user => {
+      localStorage.setItem('user', JSON.stringify(user));
+
+      this.currentUser = JSON.parse(localStorage.getItem('user'));
+    });
+
   }
 
-  signupUser(email: string, password: string) {
-    this.firebaseAuth.auth.createUserWithEmailAndPassword(email, password).then((value) => {
-      console.log('Success!', value)
-    }).catch(error => console.log('error'));
+  signupUser(user) {
+    return new Promise<any>((resolve, reject) => {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(user.email, user.password)
+        .then((res) => {
+          const currentUserId = firebase.auth().currentUser.uid;
+
+          this.usersRef
+            .child(currentUserId)
+            .set({
+              uid: currentUserId,
+              email: user.email,
+              firstName: user.firstName,
+              lastName: user.lastName,
+              username: user.username,
+              picture: null
+            }).then(() => {
+              resolve(res);
+            });
+          }, err => {
+            reject(err);
+
+            // this.alertsProvider.showAlert(err.message);
+          });
+    });
   }
 
-  signinUser(email: string, password: string) {
-    this.firebaseAuth.auth.signInWithEmailAndPassword(email, password)
-      .then(
-        response => {
-          firebase.auth().currentUser.getIdToken()
-            .then(
-              (token: string) => this.token = token
-            )
-        }
-        )
-      .catch(
-        error => console.log('error'),
-      );
+  signinUser(user) {
+    return new Promise<any>((resolve, reject) => {
+      this.firebaseAuth
+        .auth
+        .signInWithEmailAndPassword(user.email, user.password)
+        .then((res) => {
+          resolve(res);
+        }, err => {
+          reject(err);
+
+          // this.alertsProvider.showAlert(err.message);
+        });
+    });
   }
 
   logout() {
-    this.firebaseAuth.auth.signOut();
-    this.token = null;
+    localStorage.clear();
+
+    return this.firebaseAuth.auth.signOut();
+
   }
 
   isLoggedIn(): boolean {

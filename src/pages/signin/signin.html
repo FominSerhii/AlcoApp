@@ -3,32 +3,82 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-slides pager="false" autoplay="2000" loop="true" speed="1500" effect="fade">
+  <!-- <ion-slides pager="false" autoplay="2000" loop="true" speed="1500" effect="fade">
     <ion-slide class="slide-background swiper-no-swiping" *ngFor="let background of backgrounds" [ngStyle]="{'background-image': 'url(' + background +')'}">
     </ion-slide>
-  </ion-slides>
+  </ion-slides> -->
   <div class="login-container">
     <img class="logo" src="assets/imgs/logo.png" />
 
-    <form #f="ngForm" >
+    <!-- <form [formGroup]="signinForm">
       <ion-list>
         <ion-item>
           <ion-label fixed>Mail</ion-label>
-          <ion-input type="email" ngModel name="email" required></ion-input>
+          <ion-input type="email" name="email" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label fixed>Password</ion-label>
-          <ion-input type="password" ngModel name="password" required [minlength]="6"></ion-input>
+          <ion-input type="password"  name="password" required></ion-input>
         </ion-item>
       </ion-list>
-      <button ion-button block type="submit" (click)="onSignin(f)" [disabled]="!f.valid">Signin</button>
+      <button type="submit" ion-button block>
+        <span *ngIf="!signinLoading">Sign In</span>
+        <ion-spinner name="dots" color="light" *ngIf="signinLoading"></ion-spinner>
+      </button>
+
+
 
       <ion-item>
         Don't have an account?
         <button ion-button item-end round (click)="goSignupPage()">Sign Up</button>
       </ion-item>
 
-    </form>
+    </form> -->
+    <form [formGroup]="signinForm">
+    <ion-list no-lines>
+      <ion-item>
+        <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <div>
+      <button class="button-test" type="submit" ion-button block [disabled]="!signinForm.valid" (click)="onSignin()">
+        <span *ngIf="!signinLoading">Sign In</span>
+        <ion-spinner name="dots" color="light" *ngIf="signinLoading"></ion-spinner>
+      </button>
+
+      <ion-row justify-content-around>
+        <button ion-button clear icon-only (click)="signinGoogle()">
+          <ion-icon name="logo-google" color="light"></ion-icon>
+        </button>
+
+        <button ion-button clear icon-only (click)="signinTwitter()">
+          <ion-icon name="logo-twitter" color="light"></ion-icon>
+        </button>
+
+        <button ion-button clear icon-only (click)="signinFacebook()">
+          <ion-icon name="logo-facebook" color="light"></ion-icon>
+        </button>
+
+        <button ion-button clear icon-only (click)="signinGithub()">
+          <ion-icon name="logo-github" color="light"></ion-icon>
+        </button>
+      </ion-row>
+
+      <p class="text-test">
+        Don't have account? <a (click)="goToSignup()">Sign Up</a>
+      </p>
+
+      <p class="text-test">
+        <a (click)="goToResetPassword()">Forgot password?</a>
+      </p>
+    </div>
+  </form>
+
 
   </div>
 </ion-content>
