@@ -7,6 +7,32 @@ page-law {
 		margin-right: auto;
 	}
 
+	h1 {
+		font-size: 16px;
+		font-weight: bold;
+	}
+
+	ion-header {
+
+	  .toolbar-background {
+	    background: #191970;
+	    border: none !important;
+	  }
+	  .toolbar-title {
+	  	text-align: center;
+	    color: white;
+	  }
+
+	  .pin {
+	  	color: #ff6600;
+	  }
+
+	  ion-icon {
+	  	color: #ff6600;
+	  }
+	}
+
+
 }
 
 

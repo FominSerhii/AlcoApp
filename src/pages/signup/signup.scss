@@ -1,40 +1,56 @@
 page-signup {
 
+
+.masters {
+  background-color: #191970 !important;
+
+  .main-card {
+    margin-top: 75px;
+    background-color: white !important;
+
+  }
+
+  ion-card {
+    border-top-left-radius: 25px !important;
+    border-top-right-radius: 25px !important;
+    // border-radius: 21px !important;
+    margin-left: 0px !important;
+    width: 100% !important;
+  }
+}
+
 .scroll-content {
     margin-top: 0 !important;
   }
   .logo {
-    width: 70%;
+    width: 48%;
     height: auto;
-    padding-top: 9vh;
-    margin-bottom: 15vh;
+    padding-top: 6vh;
+    margin-bottom: 6vh;
+    margin-left: auto;
+    margin-right: auto;
   }
-  span {
-    color: white;
+
+  ion-item {
+    margin-top: 5px !important;
+    background: none !important;
+    padding: 5px 0 !important;
+    border-bottom: 1px solid white !important;
+
+    .label {
+      margin: 0;
+      width: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .text-input {
+      font-size: 18px;
+      font-family: 'Nunito-Regular';
+    }
   }
-  .slide-background {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-color: transparent;
-  }
-  .slide-zoom {
-    background: rgba(32, 32, 32, 0.2) !important;
-    height: 100%;
-  }
-  .ion-slides {
-    height: 100vh;
-  }
-  .ion-item {
-    color: white !important;
-    padding-left: 10px !important;
-    margin-bottom: 10px;
-    background-color: transparent !important;
-    font-size: 0.9em;
-  }
-   ::-webkit-input-placeholder {
-    color: white !important;
-  }
+
   .login-container {
     color: white;
     position: absolute;
@@ -47,6 +63,10 @@ page-signup {
   }
   .ion-button {
     opacity: 0.8;
+  }
+
+  .text-test {
+    text-align: center;
   }
 }
 

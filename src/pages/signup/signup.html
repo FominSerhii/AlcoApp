@@ -1,46 +1,50 @@
-<ion-content padding>
-  <div class="background">
-    <div class="logo"></div>
-  </div>
+<ion-content class="masters">
 
-  <form [formGroup]="signupForm" (ngSubmit)="signup()">
-    <ion-list no-lines>
-    <ion-row class="multiple-col">
-      <ion-col>
-        <ion-item>
-          <ion-input type="text" formControlName="firstName" placeholder="First Name"></ion-input>
-        </ion-item>
-      </ion-col>
+  <ion-card class="main-card">  
 
-      <ion-col>
-        <ion-item>
-          <ion-input type="text" formControlName="lastName" placeholder="Last Name"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+    <img class="logo" src="assets/imgs/1080.png" />
 
-    <ion-item>
-      <ion-input type="text" formControlName="username" placeholder="Username"></ion-input>
-    </ion-item>
+    <form [formGroup]="signupForm" (ngSubmit)="signup()">
+      <ion-list no-lines>
+      <ion-row class="multiple-col">
+        <ion-col>
+          <ion-item>
+            <ion-input type="text" formControlName="firstName" placeholder="First Name"></ion-input>
+          </ion-item>
+        </ion-col>
 
-    <ion-item>
-      <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
-    </ion-item>
+        <ion-col>
+          <ion-item>
+            <ion-input type="text" formControlName="lastName" placeholder="Last Name"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
-    <ion-item>
-      <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
-    </ion-item>
-  </ion-list>
+      <ion-item>
+        <ion-input type="text" formControlName="username" placeholder="Username"></ion-input>
+      </ion-item>
 
-    <div>
-      <button class="button-test" type="submit" ion-button block [disabled]="!signupForm.valid">
-        <span *ngIf="!signupLoading">Sign Up</span>
-        <ion-spinner name="dots" color="light" *ngIf="signupLoading"></ion-spinner>
-      </button>
+      <ion-item>
+        <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+      </ion-item>
 
-      <p class="text-test">
-        Already a member? <a (click)="goToSignin()">Sign In</a>
-      </p>
-    </div>
-  </form>
+      <ion-item>
+        <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+      </ion-item>
+    </ion-list>
+
+      <div>
+        <button class="button-test" type="submit" ion-button block [disabled]="!signupForm.valid">
+          <span *ngIf="!signupLoading">Sign Up</span>
+          <ion-spinner name="dots" color="light" *ngIf="signupLoading"></ion-spinner>
+        </button>
+
+        <p class="text-test">
+          Already a member? <a (click)="goToSignin()">Sign In</a>
+        </p>
+      </div>
+    </form>
+
+  </ion-card>
+
 </ion-content>

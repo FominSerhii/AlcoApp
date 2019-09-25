@@ -21,7 +21,9 @@ export const config = {
 @Component({
   templateUrl: 'app.html'
 })
+
 export class MyApp {
+
   rootPage:any = HomePage;
 
 

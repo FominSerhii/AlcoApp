@@ -3,7 +3,8 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup, FormControl, NgForm, Validators } from '@angular/forms';
 
 // import { TabsPage } from '../tabs/tabs';
-import { HomePage } from '../home/home'
+import { HomePage } from '../home/home';
+import { SigninPage } from '../signin/signin';
 import { AuthorizationProvider } from '../../providers/authorization/authorization';
 
 @IonicPage()
@@ -52,6 +53,10 @@ export class SignupPage {
     }, (rej) => {
       this.signupLoading = false;
     });
+  }
+
+  goToSignin() {
+    this.navCtrl.setRoot(SigninPage);
   }
 
 

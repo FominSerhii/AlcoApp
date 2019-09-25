@@ -1,84 +1,61 @@
 <ion-header no-border>
-  <ion-navbar transparent>
+  <ion-navbar>
   </ion-navbar>
 </ion-header>
-<ion-content>
-  <!-- <ion-slides pager="false" autoplay="2000" loop="true" speed="1500" effect="fade">
-    <ion-slide class="slide-background swiper-no-swiping" *ngFor="let background of backgrounds" [ngStyle]="{'background-image': 'url(' + background +')'}">
-    </ion-slide>
-  </ion-slides> -->
-  <div class="login-container">
-    <img class="logo" src="assets/imgs/logo.png" />
 
-    <!-- <form [formGroup]="signinForm">
-      <ion-list>
+<ion-content class="masters">
+
+  <ion-card class="main-card">  
+
+<!--     <div class="login-container"> -->
+      <img class="logo" src="assets/imgs/1080.png" />
+
+      <form [formGroup]="signinForm">
+
+      <ion-list no-lines>
         <ion-item>
-          <ion-label fixed>Mail</ion-label>
-          <ion-input type="email" name="email" required></ion-input>
+          <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
         </ion-item>
+
         <ion-item>
-          <ion-label fixed>Password</ion-label>
-          <ion-input type="password"  name="password" required></ion-input>
+          <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
         </ion-item>
       </ion-list>
-      <button type="submit" ion-button block>
-        <span *ngIf="!signinLoading">Sign In</span>
-        <ion-spinner name="dots" color="light" *ngIf="signinLoading"></ion-spinner>
-      </button>
 
+      <div>
+        <ion-row>
+          <ion-col width-50 style="text-align: center;">
+            <button class="button-test" type="submit" ion-button round [disabled]="!signinForm.valid" (click)="onSignin()">
+              <span *ngIf="!signinLoading">Sign In</span>
+              <ion-spinner name="dots" color="light" *ngIf="signinLoading"></ion-spinner>
+            </button>
+          </ion-col>
+        </ion-row>
 
+        <ion-row justify-content-around>
+          <button ion-button clear icon-only (click)="signinGoogle()">
+            <ion-icon name="logo-google" color="secondary"></ion-icon>
+          </button>
 
-      <ion-item>
-        Don't have an account?
-        <button ion-button item-end round (click)="goSignupPage()">Sign Up</button>
-      </ion-item>
+          <button ion-button clear icon-only (click)="signinFacebook()">
+            <ion-icon name="logo-facebook" color="secondary"></ion-icon>
+          </button>
 
-    </form> -->
-    <form [formGroup]="signinForm">
-    <ion-list no-lines>
-      <ion-item>
-        <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
-      </ion-item>
+          <button ion-button clear icon-only (click)="signinGithub()">
+            <ion-icon name="logo-github" color="secondary"></ion-icon>
+          </button>
+        </ion-row>
 
-      <ion-item>
-        <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
-      </ion-item>
-    </ion-list>
+        <p class="text-test">
+          Don't have account? <a (click)="goSignupPage()">Sign Up</a>
+        </p>
 
-    <div>
-      <button class="button-test" type="submit" ion-button block [disabled]="!signinForm.valid" (click)="onSignin()">
-        <span *ngIf="!signinLoading">Sign In</span>
-        <ion-spinner name="dots" color="light" *ngIf="signinLoading"></ion-spinner>
-      </button>
+        <p class="text-test">
+          Forgot password?
+        </p>
+      </div>
+    </form>
 
-      <ion-row justify-content-around>
-        <button ion-button clear icon-only (click)="signinGoogle()">
-          <ion-icon name="logo-google" color="light"></ion-icon>
-        </button>
-
-        <button ion-button clear icon-only (click)="signinTwitter()">
-          <ion-icon name="logo-twitter" color="light"></ion-icon>
-        </button>
-
-        <button ion-button clear icon-only (click)="signinFacebook()">
-          <ion-icon name="logo-facebook" color="light"></ion-icon>
-        </button>
-
-        <button ion-button clear icon-only (click)="signinGithub()">
-          <ion-icon name="logo-github" color="light"></ion-icon>
-        </button>
-      </ion-row>
-
-      <p class="text-test">
-        Don't have account? <a (click)="goToSignup()">Sign Up</a>
-      </p>
-
-      <p class="text-test">
-        <a (click)="goToResetPassword()">Forgot password?</a>
-      </p>
-    </div>
-  </form>
-
-
-  </div>
+ <!--    </div> -->
+  </ion-card>
 </ion-content>

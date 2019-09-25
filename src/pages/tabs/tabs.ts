@@ -1,17 +1,18 @@
-// import { Component } from '@angular/core';
+import { Component } from '@angular/core';
 
-// import { HomePage } from '../home/home';
-// import { SigninPage } from '../signin/signin'
+import { HomePage } from '../home/home';
+import { SigninPage } from '../signin/signin'
 
-// @Component({
-//   templateUrl: 'tabs.html'
-// })
-// export class TabsPage {
+@Component({
+  templateUrl: 'tabs.html'
+})
+export class TabsPage {
 
-//   tab1Root = HomePage;
-//   tab3Root = SigninPage;
+  tab1Root = HomePage;
+  tab3Root = SigninPage;
 
-//   constructor() {
+  constructor() {
 
-//   }
-// }
+  }
+}
+
