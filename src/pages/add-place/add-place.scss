@@ -1,13 +1,40 @@
 page-add-place {
 
-}
+	ion-header {
 
-.bg {
-  background-repeat: no-repeat;
-  background-size: cover;
-  // background-color: #DCDCDC !important;
-}
+	  .toolbar-background {
+	    background: #191970;
+	    border: none !important;
+	  }
+	  .toolbar-title {
+	  	margin-left: -32px;
+	    color: white;
+	    text-align: center;
+	  }
 
-ion-item {
-	background-color: transparent !important;
+	  .back-button {
+	  	color: white;
+	  }
+	}
+
+	.bg {
+		background-color: #191970;
+	}
+
+	ion-card {
+		margin-top: 22px; 
+		border-top-left-radius: 25px !important;
+    border-top-right-radius: 25px !important;
+		margin-left: 0px !important;
+		width: 100% !important;
+	}	
+
+	.main-card {
+		margin-top: 22px;
+	}
+
+	img {
+		height: 180px;
+	}
+
 }

@@ -1,98 +1,101 @@
-<ion-header>
+<ion-header no-border>
   <ion-navbar>
-    <ion-title>ДОДАТИ МІСЦЕ</ion-title>
+    <ion-title>Додати Мiсце</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="bg">
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <ion-list>
-      <ion-item>
-        <ion-label fixed>Назва</ion-label>
-        <ion-input
-          type="text"
-          placeholder="I'm here . . ."
-          name="title"
-          ngModel
-          required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Короткий опис</ion-label>
-        <ion-textarea
-          name="description"
-          ngModel
-          required></ion-textarea>
-      </ion-item>
-    </ion-list>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <button
-            ion-button
-            block
-            round
-            type="button"
-            icon-left
-            (click)="onLocate()">
-            <ion-icon name="locate"></ion-icon>
-            Знайти мене
-            </button>
-        </ion-col>
-        <ion-col>
-          <button
-            ion-button
-            block
-            round
-            type="button"
-            icon-left
-            (click)="onOpenMap()">
-            <ion-icon name="map"></ion-icon>
-            Обрати на карті
-            </button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <p>Вибране місце ...</p>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col text-center>
-          <h2>Зробити фото</h2>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <button
-            ion-button
-            icon-left
-            block
-            round
-            type="button"
-            (click)="onTakePhoto()">
-            <ion-icon name="camera"></ion-icon>
-            Відкрити камеру
-            </button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <img [src]="">
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <button
-            ion-button
-            color="secondary"
-            block
-            round
-            type="submit"
-            [disabled]="!f.valid">
-            Додати це місце
-            </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
+<ion-content class="bg">
+  <ion-card class="main-card">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <ion-list>
+        <ion-item>
+          <ion-label fixed>Назва</ion-label>
+          <ion-input
+            type="text"
+            placeholder="I'm here . . ."
+            name="title"
+            ngModel
+            required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Короткий опис</ion-label>
+          <ion-textarea
+            name="description"
+            ngModel
+            required></ion-textarea>
+        </ion-item>
+      </ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <button
+              ion-button
+              block
+              round
+              type="button"
+              icon-left
+              (click)="onLocate()">
+              <ion-icon name="locate"></ion-icon>
+              Знайти мене
+              </button>
+          </ion-col>
+          <ion-col>
+            <button
+              ion-button
+              block
+              round
+              type="button"
+              icon-left
+              (click)="onOpenMap()">
+              <ion-icon name="map"></ion-icon>
+              Обрати на карті
+              </button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <p>Вибране місце ...</p>
+            <img src="assets/imgs/advance-card-map-paris.png">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center>
+            <h2>Зробити фото</h2>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <button
+              ion-button
+              icon-left
+              block
+              round
+              type="button"
+              (click)="onTakePhoto()">
+              <ion-icon name="camera"></ion-icon>
+              Відкрити камеру
+              </button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <!-- <img [src]=""> -->
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <button
+              ion-button
+              color="secondary"
+              block
+              round
+              type="submit"
+              [disabled]="!f.valid">
+              Додати це місце
+              </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-card>
 </ion-content>

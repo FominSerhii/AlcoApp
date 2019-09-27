@@ -14,64 +14,64 @@
   <ion-card class="main-card">
     <div padding>
       <ion-segment [(ngModel)]="page">
-        <ion-segment-button value="home" >
+        <ion-segment-button value="home" (click)="home()">
           <ion-icon name="home"></ion-icon>
         </ion-segment-button>
-        <ion-segment-button value="chats">
+        <ion-segment-button value="chats" (click)="chats()">
           <ion-icon name="chatbubbles"></ion-icon>
         </ion-segment-button>
-        <ion-segment-button value="chanell">
+<!--         <ion-segment-button value="chanell">
           <ion-icon name="albums"></ion-icon>
-        </ion-segment-button>
+        </ion-segment-button> -->
         <ion-segment-button value="layout" (click)="openDialog()">
           <ion-icon name="bookmarks"></ion-icon>
         </ion-segment-button>
-        <ion-segment-button value="profile">
+        <ion-segment-button value="profile" (click)="profile()">
           <ion-icon name="person"></ion-icon>
         </ion-segment-button>
       </ion-segment>
     </div>
 
-<ion-row>
-  <ion-col width-50 style="text-align: center;">
-    <button ion-button round (click)="onLogout()">Logout</button>
-  </ion-col>
-</ion-row>
+  <ion-row>
+    <ion-col width-50 style="text-align: center;">
+      <button ion-button round (click)="onLogout()">Logout</button>
+    </ion-col>
+  </ion-row>
 
-  <div>
-    <ion-card class="card1">
-      <ion-card class="card1">
-        <div class="refresh">
-          <ion-icon class="refresh-icon" (click)="updateData()" name="ios-refresh-circle"></ion-icon>
-        </div>
-        <!-- <ion-card-header>
-          Diogram
-        </ion-card-header> -->
-        <ion-card-content>
-          <canvas #pieCanvas></canvas>
-        </ion-card-content>
+    <div *ngIf="homePage">
+      <ion-card  class="card1">
+        <ion-card class="card1">
+          <div class="refresh">
+            <ion-icon class="refresh-icon" (click)="updateData()" name="ios-refresh-circle"></ion-icon>
+          </div>
+          <ion-card-content>
+            <canvas #pieCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
       </ion-card>
-    </ion-card>
 
-    <div>
-      <img class="img" src="assets/imgs/cars.jpg" height="60" width="350">
+      <div>
+        <img class="img" src="assets/imgs/cars.jpg" height="60" width="350">
+      </div>
+
+      <!--   <div>
+          <img class="img2" src="assets/imgs/машина.png" height="60">
+        </div> -->
+
+      <ion-card *ngFor="let card of cards" class="adv-map">
+        <div class="map-image">
+          <img [src]="card.imageUrl">
+        </div>
+        <ion-item *ngFor="let place of card.places" (click)="placeTapped(place)">
+          <ion-icon color="subtle" large item-start [name]='place.icon'></ion-icon>
+          <h2>{{place.name}}</h2>
+          <p>{{place.address}}</p>
+        </ion-item>
+      </ion-card>
     </div>
 
-    <!--   <div>
-        <img class="img2" src="assets/imgs/машина.png" height="60">
-      </div> -->
+    <page-chats *ngIf="chatsPage"></page-chats>
 
-    <ion-card *ngFor="let card of cards" class="adv-map">
-      <div class="map-image">
-        <img [src]="card.imageUrl">
-      </div>
-      <ion-item *ngFor="let place of card.places" (click)="placeTapped(place)">
-        <ion-icon color="subtle" large item-start [name]='place.icon'></ion-icon>
-        <h2>{{place.name}}</h2>
-        <p>{{place.address}}</p>
-      </ion-item>
-    </ion-card>
-  </div>
 
   </ion-card>
 

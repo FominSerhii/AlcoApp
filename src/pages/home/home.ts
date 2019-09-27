@@ -17,6 +17,10 @@ export class HomePage {
   pieChart: any;
   page;
 
+  homePage = true;
+  chatsPage = false;
+  profilePage = false;
+
   constructor(public navCtrl: NavController,
               public toastCtrl: ToastController,
               public modalCtrl: ModalController,
@@ -80,14 +84,6 @@ export class HomePage {
     alert(place.name + ' was tapped.');
   }
 
-  getDirections(card) {
-    alert('Getting directions to ' + card.name);
-  }
-
-  seeInMap(card) {
-    alert('Seeing ' + card.name + ' on maps.');
-  }
-
   openDialog() {
     this.openModal('LawPage');
   }
@@ -101,6 +97,24 @@ export class HomePage {
     this.authService.logout();
     this.navCtrl.setRoot(SigninPage);
     console.log('logout')
+  }
+
+  home() {
+    this.homePage = true;
+    this.chatsPage = false;
+    this.profilePage = false;
+  }
+
+  chats() {
+    this.homePage = false;
+    this.chatsPage = true;
+    this.profilePage = false;
+  }
+
+  profile() {
+    this.homePage = false;
+    this.chatsPage = false;
+    this.profilePage = true;
   }
 
 }

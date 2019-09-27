@@ -13,11 +13,19 @@ import { MyApp } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
 import { PlacePage } from '../pages/place/place';
+import { ChatsPage } from '../pages/chats/chats';
 import { SignupPage } from '../pages/signup/signup';
 import { SigninPage } from '../pages/signin/signin';
+import { UserProvider } from '../providers/user/user';
 import { ContactPage } from '../pages/contact/contact';
+import { ChatsProvider } from '../providers/chats/chats';
 import { AddPlacePage } from '../pages/add-place/add-place';
+import { AlertsProvider } from '../providers/alerts/alerts';
+import { FriendsProvider } from '../providers/friends/friends';
+import { ChannelsProvider } from '../providers/channels/channels';
+import { RequestsProvider } from '../providers/requests/requests';
 import { SetLocationPage } from '../pages/set-location/set-location';
+import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { AuthorizationProvider } from '../providers/authorization/authorization';
 
 export const config = {
@@ -39,7 +47,9 @@ export const config = {
     PlacePage,
     SetLocationPage,
     SigninPage,
-    SignupPage
+    SignupPage,
+    ChatsPage,
+    EditProfilePage
   ],
   imports: [
     BrowserModule,
@@ -59,13 +69,21 @@ export const config = {
     PlacePage,
     SetLocationPage,
     SigninPage,
-    SignupPage
+    SignupPage,
+    ChatsPage,
+    EditProfilePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthorizationProvider
+    AuthorizationProvider,
+    AlertsProvider,
+    ChannelsProvider,
+    ChatsProvider,
+    FriendsProvider,
+    RequestsProvider,
+    UserProvider
   ]
 })
 export class AppModule {}
