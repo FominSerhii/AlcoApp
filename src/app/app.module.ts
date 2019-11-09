@@ -21,11 +21,13 @@ import { ContactPage } from '../pages/contact/contact';
 import { ChatsProvider } from '../providers/chats/chats';
 import { AddPlacePage } from '../pages/add-place/add-place';
 import { AlertsProvider } from '../providers/alerts/alerts';
+import { ChatUsersPage } from '../pages/chat-users/chat-users';
 import { FriendsProvider } from '../providers/friends/friends';
 import { ChannelsProvider } from '../providers/channels/channels';
 import { RequestsProvider } from '../providers/requests/requests';
 import { SetLocationPage } from '../pages/set-location/set-location';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
+import { ChatSelectedPage } from '../pages/chat-selected/chat-selected';
 import { AuthorizationProvider } from '../providers/authorization/authorization';
 
 export const config = {
@@ -49,7 +51,9 @@ export const config = {
     SigninPage,
     SignupPage,
     ChatsPage,
-    EditProfilePage
+    EditProfilePage,
+    ChatUsersPage,
+    ChatSelectedPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,7 @@ export const config = {
     AngularFireModule.initializeApp(config),
     IonicStorageModule.forRoot(),
   ],
-  bootstrap: [IonicApp],
+  bootstrap: [IonicApp],    
   entryComponents: [
     MyApp,
     ContactPage,
@@ -71,7 +75,9 @@ export const config = {
     SigninPage,
     SignupPage,
     ChatsPage,
-    EditProfilePage
+    EditProfilePage,
+    ChatUsersPage,
+    ChatSelectedPage
   ],
   providers: [
     StatusBar,

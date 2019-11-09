@@ -8,17 +8,17 @@
   <ion-card class="main-card">  
 
 <!--     <div class="login-container"> -->
-      <img class="logo" src="assets/imgs/1080.png" />
+      <img class="logo" src="assets/imgs/car.png" />
 
-      <form [formGroup]="signinForm">
+      <form padding [formGroup]="signinForm">
 
       <ion-list no-lines>
         <ion-item>
-          <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
+          <ion-input formControlName="email" type="text" placeholder="Ел. Пошта"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+          <ion-input formControlName="password" type="password" placeholder="Пароль"></ion-input>
         </ion-item>
       </ion-list>
 
@@ -26,7 +26,7 @@
         <ion-row>
           <ion-col width-50 style="text-align: center;">
             <button class="button-test" type="submit" ion-button round [disabled]="!signinForm.valid" (click)="onSignin()">
-              <span *ngIf="!signinLoading">Sign In</span>
+              <span *ngIf="!signinLoading">Увийті</span>
               <ion-spinner name="dots" color="light" *ngIf="signinLoading"></ion-spinner>
             </button>
           </ion-col>
@@ -47,11 +47,11 @@
         </ion-row>
 
         <p class="text-test">
-          Don't have account? <a (click)="goSignupPage()">Sign Up</a>
+          Не маєте аккаунту <a (click)="goSignupPage()">Зареєструватися</a>
         </p>
 
         <p class="text-test">
-          Forgot password?
+          Забули пароль
         </p>
       </div>
     </form>

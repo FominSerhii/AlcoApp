@@ -12,37 +12,14 @@
 <ion-content class="masters">
 
   <ion-card class="main-card">
-    <div padding>
-      <ion-segment [(ngModel)]="page">
-        <ion-segment-button value="home" (click)="home()">
-          <ion-icon name="home"></ion-icon>
-        </ion-segment-button>
-        <ion-segment-button value="chats" (click)="chats()">
-          <ion-icon name="chatbubbles"></ion-icon>
-        </ion-segment-button>
-<!--         <ion-segment-button value="chanell">
-          <ion-icon name="albums"></ion-icon>
-        </ion-segment-button> -->
-        <ion-segment-button value="layout" (click)="openDialog()">
-          <ion-icon name="bookmarks"></ion-icon>
-        </ion-segment-button>
-        <ion-segment-button value="profile" (click)="profile()">
-          <ion-icon name="person"></ion-icon>
-        </ion-segment-button>
-      </ion-segment>
-    </div>
-
-  <ion-row>
-    <ion-col width-50 style="text-align: center;">
-      <button ion-button round (click)="onLogout()">Logout</button>
-    </ion-col>
-  </ion-row>
-
     <div *ngIf="homePage">
       <ion-card  class="card1">
         <ion-card class="card1">
           <div class="refresh">
             <ion-icon class="refresh-icon" (click)="updateData()" name="ios-refresh-circle"></ion-icon>
+          </div>
+          <div class="law">
+            <ion-icon class="refresh-icon" (click)="openDialog()" name="bookmarks"></ion-icon>
           </div>
           <ion-card-content>
             <canvas #pieCanvas></canvas>
@@ -51,12 +28,8 @@
       </ion-card>
 
       <div>
-        <img class="img" src="assets/imgs/cars.jpg" height="60" width="350">
+        <img class="img" src="assets/imgs/авария.png" height="60" width="350">
       </div>
-
-      <!--   <div>
-          <img class="img2" src="assets/imgs/машина.png" height="60">
-        </div> -->
 
       <ion-card *ngFor="let card of cards" class="adv-map">
         <div class="map-image">
@@ -71,8 +44,6 @@
     </div>
 
     <page-chats *ngIf="chatsPage"></page-chats>
-
-
   </ion-card>
 
 

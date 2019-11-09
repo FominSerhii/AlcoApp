@@ -1,15 +1,117 @@
-<!--
-  Generated template for the ChatSelectedPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-  <ion-navbar>
-    <ion-title>chat-selected</ion-title>
-  </ion-navbar>
+<ion-header no-border>
+  <ion-toolbar hideBackButton>
+    <ion-buttons start>
+      <button ion-button clear navPop>
+        <ion-icon name="arrow-round-back" style="zoom: 2.0;"></ion-icon>
+      </button>
+    </ion-buttons>
+    <div class="header-title">
+      <ion-title>{{ selectedFriend?.firstName + ' ' + selectedFriend?.lastName }}</ion-title>
+      <p>{{ selectedFriend?.status }}</p>
+    </div>
+    <ion-buttons end>
+      <div class="header-user-picture">
+        <img [src]="selectedFriend?.picture" *ngIf="selectedFriend?.picture" />
+        <div class="user-no-photo" *ngIf="!selectedFriend?.picture">
+          {{ selectedFriend?.firstName.charAt(0) }}
+        </div>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content #content class="masters">
+  <ion-card class="main-card">
+    <ion-list no-lines *ngIf="messages?.length > 0; else noMessages">
+      <ion-item *ngFor="let message of messages" text-wrap>
+        <div class="message-left" *ngIf="message.sentBy !== currentUser.uid">
+          <ion-row class="message-title">
+<!--             <div class="message-name">{{ selectedFriend?.firstName + ' ' + selectedFriend?.lastName }}</div> -->
+            <div class="message-date">{{ message.timestamp | date:'short' }}</div>
+          </ion-row>
 
+          <div
+            class="bubble-left"
+            *ngIf="message.type === 'text'">
+            <span text-wrap>{{ message.text }}</span>
+          </div>
+
+          <div
+            class="message-photo"
+            *ngIf="message.type === 'photo'"
+            (click)="selectPhoto(message.photo)">
+            <img [src]="message.photo" />
+          </div>
+        </div>
+
+        <div class="message-right" *ngIf="message.sentBy === currentUser.uid">
+          <ion-row class="message-title">
+<!--             <div class="message-name">Me</div> -->
+            <div class="message-date">{{ message.timestamp | date:'short' }}</div>
+          </ion-row>
+
+          <div
+            class="bubble-right"
+            *ngIf="message.type === 'text'"
+            text-wrap>
+            {{ message.text }}
+          </div>
+
+          <div
+            class="message-photo"
+            *ngIf="message.type === 'photo'"
+            (click)="selectPhoto(message.photo)">
+            <img [src]="message.photo" />
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <ng-template #noMessages>
+      <div class="no-items">
+        No messages here yet...
+      </div>
+    </ng-template>
+  </ion-card>
 </ion-content>
+
+<ion-footer ion-fixed>
+  <ion-toolbar class="tools-toolbar" *ngIf="toolsToggle">
+    <ion-buttons start>
+      <button ion-button clear icon-only (click)="toolsToggle = !toolsToggle">
+        <ion-icon name="close" style="zoom: 1.5;"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button clear icon-only (click)="openCamera()">
+        <ion-icon name="camera" style="zoom: 1.0;" ></ion-icon>
+      </button>
+
+      <button ion-button clear icon-only (click)="openGallery()">
+        <ion-icon name="image" style="zoom: 1.0;" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar class="message-toolbar">
+    <ion-buttons start>
+      <button ion-button (click)="toolsToggle = !toolsToggle">
+        <ion-icon name="link" style="zoom: 1.5;" ></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-input
+      class="message-input"
+      [(ngModel)]="message.text"
+      placeholder="Type a message">
+    </ion-input>
+
+    <ion-buttons end>
+      <button ion-button (click)="addText()" [disabled]="!message.text">
+        <ion-icon name="send" style="zoom: 2.0;" ></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-footer>

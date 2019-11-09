@@ -1,3 +1,256 @@
 page-chat-selected {
+  ion-header {
 
-}
+    .toolbar-background {
+      background: #191970;
+      border: none !important;
+    }
+    .toolbar-title {
+      color: white;
+      text-align: center;
+    }
+
+    .people {
+      color: #ff6600;
+    }
+  }
+
+  .masters {
+    background-color: #191970;
+
+    .main-card {
+      min-height: 550px;
+      margin-top: 22px;
+      border-top-left-radius: 25px !important;
+      border-top-right-radius: 25px !important;
+    }
+
+    ion-card {
+      margin-left: 0px !important;
+      width: 100% !important;
+    }
+  }
+
+
+    .header-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 24px;
+      }
+
+      p {
+        margin: 0;
+        padding: 0;
+        color: #525257;
+      }
+    }
+
+    .header-user-picture {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        border-radius: 50%;
+        overflow: hidden;
+        width: 36px;
+        height: 36px;
+      }
+    }
+
+    .user-no-photo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 36px;
+      min-height: 36px;
+      background: #FF8C00;
+      border-radius: 50%;
+      color: white;
+    }
+  }
+
+  ion-footer {
+    .tools-toolbar {
+      .toolbar-background {
+        border: none !important;
+      }
+
+      ion-buttons[start] {
+        button {
+          margin: 0 10px;
+        }
+      }
+
+      ion-buttons[end] {
+        button {
+          margin: 0 5px;
+        }
+      }
+    }
+
+    .message-toolbar {
+      min-height: 50px;
+      padding: 10px;
+
+      .toolbar-background {
+        border: none !important;
+      }
+
+      .text-input {
+        font-size: 16px;
+      }
+    }
+
+    .message-input {
+      width: 97%;
+      margin-left: 3px;
+      background: #f3f7fb;
+      border-radius: 75px;
+      padding: 0 15px;
+      margin-bottom: 5px;
+
+      .text-input {
+        min-height: 10px;
+        margin: 8px 8px 8px 0;
+      }
+    }
+
+    .toolbar {
+      .toolbar-background {
+        background: white;
+      }
+    }
+  }
+
+  ion-list {
+    ion-item {
+      background: inherit !important;
+    }
+  }
+
+  .no-items {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    color: #525257;
+    text-align: center;
+  }
+
+
+  // .message-left {
+  //   position: relative;
+  //   margin-left: 0;
+  //   padding: 10px;
+  //   background-color: #FF8C00;
+  //   width: 200px;
+  //   min-height: 50px;
+  //   text-align: left;
+  //   border-radius: 20px;
+  // }
+
+  // .message-right {
+  //   position: relative;
+  //   margin-left: calc(100% - 200px);
+  //   padding: 10px;
+  //   background-color: #191970;
+  //   width: 200px;
+  //   min-height: 50px;
+  //   text-align: left;
+  //   border-radius: 20px;
+  //   color: white;
+  // }
+
+
+
+  .message-left {
+    position: relative;
+    margin-left: 20px;
+    padding: 10px;
+    background-color: #FF8C00;
+    width: 200px;
+    min-height: 50px;
+    text-align: left;
+    border-radius: 10px;
+  }
+
+  .message-right   {
+    position: relative;
+    margin-left: calc(100% - 240px);
+    padding: 10px;
+    background-color: #191970;
+    width: 200px;
+    min-height: 50px;
+    text-align: left;
+    border-radius: 10px;
+    color: white;
+  }
+
+  .message-left:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 15px solid #FF8C00;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    top: 0;
+    left: -15px;
+  }
+
+  .message-left:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 17px solid #FF8C00;
+    top: -1px;
+    left: -17px;
+  }
+
+  .message-right:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 15px solid #191970;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    bottom: 0;
+    right: -15px;
+  }
+
+  .message-right:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 17px solid #191970;
+    bottom: -1px;
+    right: -17px;
+  }
+
+  .message-date {
+    font-size: 9px;
+    position: absolute;
+    right: 10px;
+  }
+
+  .bubble-left {
+    margin-top: 15px;
+  }
+
+  .bubble-right {
+    margin-top: 15px; 
+  }
+
+

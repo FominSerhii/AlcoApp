@@ -1,3 +1,94 @@
 page-edit-profile {
+  ion-header {
 
+	  .toolbar-background {
+	    background: #191970;
+	    border: none !important;
+	  }
+	  .toolbar-title {
+	    color: white;
+	    text-align: center;
+	  }
+
+	  .people {
+	  	color: #ff6600;
+	  }
+  }
+
+  .masters {
+		background-color: #191970;
+
+		.main-card {
+			min-height: 550px;
+			margin-top: 22px;
+			border-top-left-radius: 25px !important;
+    	border-top-right-radius: 25px !important;
+		}
+
+		ion-card {
+			margin-left: 0px !important;
+			width: 100% !important;
+		}
+	}
+
+  .profile-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    img {
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      border: 4px solid rgba(255,255,255,0.4);
+      -webkit-box-shadow: 0px 0px 142px -37px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 0px 142px -37px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 142px -37px rgba(0,0,0,0.75);
+    }
+  }
+
+  .profile-no-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: red;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.25);
+  }
+
+  ion-item {
+    margin-top: 5px !important;
+    background: none !important;
+    padding: 5px 0 !important;
+    border-bottom: 1px solid rgba(#191970, 0.9) !important;
+
+    .label {
+      margin: 0;
+      width: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .text-input {
+      color: #191970;
+      font-size: 18px;
+
+      &::placeholder {
+        color: #191970;
+      }
+    }
+
+    .item-inner {
+      border-bottom: 1px solid #7e7de2;
+    }
+  }
+
+  .value-description {
+    color: #191970;
+    font-size: 12px;
+  }
 }

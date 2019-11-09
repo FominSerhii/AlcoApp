@@ -3,7 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-// import { TabsPage } from '../pages/tabs/tabs';
+import { TabsPage } from '../pages/tabs/tabs';
 import { SigninPage } from '../pages/signin/signin';
 import { HomePage } from '../pages/home/home';
 
@@ -16,7 +16,7 @@ export const config = {
     projectId: "alcoholapp-531f5",
     storageBucket: "alcoholapp-531f5.appspot.com",
     messagingSenderId: "426245460320"
-};
+};  
 
 @Component({
   templateUrl: 'app.html'
@@ -24,7 +24,7 @@ export const config = {
 
 export class MyApp {
 
-  rootPage:any = HomePage;
+  rootPage:any = TabsPage;
 
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
@@ -36,7 +36,7 @@ export class MyApp {
     firebase.initializeApp(config);
 
     if (JSON.parse(localStorage.getItem('user'))) {
-      this.rootPage = HomePage;
+      this.rootPage = TabsPage;
       
     } else {
       this.rootPage = SigninPage;

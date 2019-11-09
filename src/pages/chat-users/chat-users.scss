@@ -1,3 +1,81 @@
 page-chat-users {
+	ion-header {
+
+	  .toolbar-background {
+	    background: #191970;
+	    border: none !important;
+	  }
+	  .toolbar-title {
+	    color: white;
+	    text-align: center;
+	  }
+
+  }
+
+  .masters {
+		background-color: #191970;
+
+		.main-card {
+			min-height: 550px;
+			margin-top: 22px;
+			border-top-left-radius: 25px !important;
+    	border-top-right-radius: 25px !important;
+		}
+
+		ion-card {
+			margin-left: 0px !important;
+			width: 100% !important;
+		}
+	}
+
+  .no-items {
+    padding: 10px;
+    color: white;
+    font-family: 'Nunito-Regular';
+    text-align: center;
+  }
+
+  ion-item {
+    margin-top: 5px !important;
+    background: none !important;
+    padding: 5px 0 !important;
+    // border-bottom: 1px solid rgba(#FF8C00, 0.9) !important;
+
+    .user-no-photo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 36px;
+      min-height: 36px;
+      background: #191970;
+      border-radius: 50%;
+      color: white;
+    }
+
+    .input-wrapper {
+      .label {
+        display: flex;
+        height: 100%;
+        align-items: center;
+      }
+    }
+
+    h2 {
+      margin: 0;
+      padding: 0;
+      color: #191970;
+      font-size: 18px;
+      font-family: 'Nunito-Regular';
+    }
+
+    .item-inner {
+      border-bottom: 1px solid #191970;
+    }
+  }
+
+  ion-searchbar {
+  	background-color: transparent !important;
+  }
+
 
 }

@@ -2,26 +2,26 @@
 
   <ion-card class="main-card">  
 
-    <img class="logo" src="assets/imgs/1080.png" />
+    <img class="logo" src="assets/imgs/car.png" />
 
-    <form [formGroup]="signupForm" (ngSubmit)="signup()">
+    <form padding [formGroup]="signupForm" (ngSubmit)="signup()">
       <ion-list no-lines>
       <ion-row class="multiple-col">
         <ion-col>
           <ion-item>
-            <ion-input type="text" formControlName="firstName" placeholder="First Name"></ion-input>
+            <ion-input type="text" formControlName="firstName" placeholder="Ім'я"></ion-input>
           </ion-item>
         </ion-col>
 
         <ion-col>
           <ion-item>
-            <ion-input type="text" formControlName="lastName" placeholder="Last Name"></ion-input>
+            <ion-input type="text" formControlName="lastName" placeholder="Прізвище"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
 
       <ion-item>
-        <ion-input type="text" formControlName="username" placeholder="Username"></ion-input>
+        <ion-input type="text" formControlName="username" placeholder="Ім'я корістувача"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -29,18 +29,18 @@
       </ion-item>
 
       <ion-item>
-        <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+        <ion-input type="password" formControlName="password" placeholder="Пароль"></ion-input>
       </ion-item>
     </ion-list>
 
       <div>
         <button class="button-test" type="submit" ion-button block [disabled]="!signupForm.valid">
-          <span *ngIf="!signupLoading">Sign Up</span>
+          <span *ngIf="!signupLoading">Зареєструватіся</span>
           <ion-spinner name="dots" color="light" *ngIf="signupLoading"></ion-spinner>
         </button>
 
         <p class="text-test">
-          Already a member? <a (click)="goToSignin()">Sign In</a>
+          Вже маєте аккаунт? <a (click)="goToSignin()">Увійти</a>
         </p>
       </div>
     </form>

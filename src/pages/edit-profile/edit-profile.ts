@@ -1,25 +1,81 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ViewController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-/**
- * Generated class for the EditProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { StatusBar } from '@ionic-native/status-bar';
 
-@IonicPage()
+import { UserProvider } from '../../providers/user/user';
+
 @Component({
   selector: 'page-edit-profile',
   templateUrl: 'edit-profile.html',
 })
-export class EditProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+export class EditProfilePage {
+  currentUserForm: FormGroup;
+
+  currentUser: any = {};
+
+  constructor(
+    public userProvider: UserProvider,
+    public viewCtrl: ViewController,
+    public formBuilder: FormBuilder,
+    private statusBar: StatusBar
+  ) {
+    this.setForms();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EditProfilePage');
+    this.statusBar.backgroundColorByHexString('#212121');
+    this.statusBar.styleLightContent();
+
+    this.getCurrentUser();
   }
+
+  ionViewDidLeave() {
+    this.statusBar.backgroundColorByHexString('#ffffff');
+    this.statusBar.styleDefault();
+  }
+
+  setForms() {
+    this.currentUserForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      username: ['', Validators.required],
+      picture: [''],
+      bio: ['']
+    });
+  }
+
+  getCurrentUser() {
+    this.userProvider.getCurrentUser().then((res) => {
+      this.currentUserForm.patchValue({ ...res });
+
+      this.currentUser = res;
+    });
+  }
+
+  updateProfile() {
+    if (this.currentUserForm.invalid) return;
+
+    let currentUser = this.currentUserForm.value;
+
+    this.currentUser.firstName = currentUser.firstName;
+    this.currentUser.lastName = currentUser.lastName;
+    this.currentUser.bio = currentUser.bio ? currentUser.bio : null;
+    this.currentUser.username = currentUser.username;
+
+    this.userProvider.updateUser(this.currentUser).then((res) => {
+      this.getCurrentUser();
+
+      this.viewCtrl.dismiss();
+    });
+  }
+
+  // openGallery() {
+  //   this.imageProvider.openGallery().then((res) => {
+  //     this.currentUserForm.patchValue({ picture: res });
+  //   });
+  // }
 
 }
