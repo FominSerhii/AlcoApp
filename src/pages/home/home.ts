@@ -20,6 +20,7 @@ export class HomePage {
   homePage = true;
   chatsPage = false;
   profilePage = false;
+  items = ["Kyle","Eric","Bailey", "Deborah", "Glenn", "Jaco", "Joni", "Gigi"]
 
   constructor(public navCtrl: NavController,
               public toastCtrl: ToastController,
