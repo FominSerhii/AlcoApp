@@ -68,14 +68,13 @@ export class EditProfilePage {
     this.userProvider.updateUser(this.currentUser).then((res) => {
       this.getCurrentUser();
 
-      this.viewCtrl.dismiss();
     });
   }
 
-  // openGallery() {
-  //   this.imageProvider.openGallery().then((res) => {
-  //     this.currentUserForm.patchValue({ picture: res });
-  //   });
-  // }
+  signout() {
+    this.authenticationProvider.signout().then((res) => {
+      this.appCtrl.getRootNav().setRoot(SigninPage);
+    });
+  }
 
 }

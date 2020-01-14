@@ -42,15 +42,6 @@
         </ion-item>
       </ion-card>
 
-      <div>
-        <input type="text" [(ngModel)]="term" >
-        <div *ngFor = "let item of items | filter:term" >
-          <p>
-            {{item}}
-          </p>
-        </div>
- 
-      </div> 
     </div>
 
     <page-chats *ngIf="chatsPage"></page-chats>

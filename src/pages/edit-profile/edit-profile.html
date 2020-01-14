@@ -1,14 +1,19 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
-    <button ion-button clear navPop>
-        <ion-icon name="arrow-round-back" style="zoom: 2.0;" ></ion-icon>
+  	<ion-buttons left>
+    	<button ion-button (click)="signout()">
+    		<div>
+       	 	<ion-icon class="prof" name="log-out" style="zoom: 2.0;" ></ion-icon>
+       	 	<br><label>Logout</label> 
+       	</div>
       </button>
+    </ion-buttons>
 
     <ion-title>Profile</ion-title>
 
     <ion-buttons end>
       <button ion-button icon-only (click)="updateProfile()">
-        <ion-icon name="checkmark" style="zoom: 1.5;"></ion-icon>
+        <ion-icon class="prof" name="checkmark" style="zoom: 1.5;"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>

@@ -30,8 +30,6 @@ import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ChatSelectedPage } from '../pages/chat-selected/chat-selected';
 import { AuthorizationProvider } from '../providers/authorization/authorization';
 
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
 export const config = {
     apiKey: "AIzaSyBwDzEQisYfF87ovoqdCxO9zgeu0W3mi38",
     authDomain: "alcoholapp-531f5.firebaseapp.com",
@@ -64,7 +62,6 @@ export const config = {
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(config),
     IonicStorageModule.forRoot(),
-    Ng2SearchPipeModule,
   ],
   bootstrap: [IonicApp],    
   entryComponents: [

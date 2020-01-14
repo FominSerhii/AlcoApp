@@ -10,6 +10,10 @@ page-chat-users {
 	    text-align: center;
 	  }
 
+    ion-title {
+      margin-left: -37px;
+    }
+
   }
 
   .masters {
@@ -75,6 +79,10 @@ page-chat-users {
 
   ion-searchbar {
   	background-color: transparent !important;
+  }
+
+  .back {
+    color: #ff6600;
   }
 
 

@@ -13,6 +13,11 @@ page-edit-profile {
 	  .people {
 	  	color: #ff6600;
 	  }
+
+    label {
+      color: #ff6600;
+    }
+
   }
 
   .masters {
@@ -90,5 +95,9 @@ page-edit-profile {
   .value-description {
     color: #191970;
     font-size: 12px;
+  }
+
+  .prof {
+    color: #ff6600;
   }
 }
