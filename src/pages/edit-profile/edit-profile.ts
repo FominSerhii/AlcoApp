@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { ViewController, App } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { UserProvider } from '../../providers/user/user';
+import { AuthorizationProvider } from '../../providers/authorization/authorization';
+import { SigninPage } from '../signin/signin';
 
 @Component({
   selector: 'page-edit-profile',
@@ -20,7 +22,9 @@ export class EditProfilePage {
     public userProvider: UserProvider,
     public viewCtrl: ViewController,
     public formBuilder: FormBuilder,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private authenticationProvider: AuthorizationProvider,
+    private appCtrl: App
   ) {
     this.setForms();
   }
@@ -72,7 +76,7 @@ export class EditProfilePage {
   }
 
   signout() {
-    this.authenticationProvider.signout().then((res) => {
+    this.authenticationProvider.logout().then((res) => {
       this.appCtrl.getRootNav().setRoot(SigninPage);
     });
   }

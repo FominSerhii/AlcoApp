@@ -5,6 +5,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AgmCoreModule } from '@agm/core';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -62,6 +63,9 @@ export const config = {
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(config),
     IonicStorageModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAobBv016tRPMQwEQddlo8RSZ0YENEK5q4'
+    })
   ],
   bootstrap: [IonicApp],    
   entryComponents: [
