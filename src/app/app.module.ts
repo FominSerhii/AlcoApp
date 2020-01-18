@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AgmCoreModule } from '@agm/core';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -94,7 +95,8 @@ export const config = {
     ChatsProvider,
     FriendsProvider,
     RequestsProvider,
-    UserProvider
+    UserProvider,
+    Geolocation
   ]
 })
 export class AppModule {}

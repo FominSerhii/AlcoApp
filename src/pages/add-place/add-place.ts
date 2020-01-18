@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, 
+         NavController, 
+         NavParams, 
+         ModalController, 
+         LoadingController, 
+         ToastController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
-import {  } from '@ionic-native/core';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { SetLocationPage } from '../set-location/set-location';
 import { Location } from '../../models/location';
@@ -20,7 +25,12 @@ export class AddPlacePage {
 
   locationIsSet = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              private modalCtrl: ModalController, 
+              private geolocation: Geolocation,
+              private loadingCtrl: LoadingController,
+              private toastCtrl: ToastController) {
   }
 
   onSubmit(form: NgForm) {
@@ -45,7 +55,29 @@ export class AddPlacePage {
   }
 
   onLocate() {
-
+    const loader = this.loadingCtrl.create({
+      content: "Отримуємо ваше місцезнаходження"
+    });
+    loader.present();
+    this.geolocation.getCurrentPosition()
+      .then(
+        location => {
+          loader.dismiss();
+          this.location.lat = location.coords.latitude;
+          this.location.lng = location.coords.longitude;
+          this.locationIsSet = true;
+        }
+      )
+      .catch(
+        error => {
+          console.log(error);
+          const toast = this.toastCtrl.create({
+            message: 'Не можемо вас знайти6 будь-ласка позначте його самостійно',
+            duration: 2500
+          });
+          toast.present();
+        }
+      );
   }
 
 }
