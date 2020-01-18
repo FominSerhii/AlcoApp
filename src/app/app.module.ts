@@ -11,6 +11,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { MyApp } from './app.component';
+
 import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
 import { PlacePage } from '../pages/place/place';
