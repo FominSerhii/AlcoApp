@@ -7,9 +7,11 @@ import { IonicPage,
          ToastController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import { SetLocationPage } from '../set-location/set-location';
 import { Location } from '../../models/location';
+import { PlacesProvider } from '../../providers/places/places';
 
 @IonicPage()
 @Component({
@@ -24,17 +26,27 @@ export class AddPlacePage {
   };
 
   locationIsSet = false;
+  imageUrl = '';
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               private modalCtrl: ModalController, 
               private geolocation: Geolocation,
               private loadingCtrl: LoadingController,
-              private toastCtrl: ToastController) {
+              private toastCtrl: ToastController,
+              private camera: Camera,
+              private placeService: PlacesProvider) {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form.value);
+    this.placeService.addPlace(form.value.title, form.value.description, this.location, this.imageUrl);
+    form.reset();
+    this.location = {
+      lat: 46.88,
+      lng: 32.0
+    };
+    this.imageUrl = '';
+    this.locationIsSet = false;
   }
 
   ionViewDidLoad() {
@@ -80,4 +92,21 @@ export class AddPlacePage {
       );
   }
 
+
+  onTakePhoto() {
+    this.camera.getPicture({
+      encodingType: this.camera.EncodingType.JPEG,
+      correctOrientation: true
+    })
+    .then(
+      imageData => {
+        this.imageUrl = imageData;
+      }
+    )
+    .catch(
+      err => {
+        console.log(err);
+      }
+    );
+  }
 }

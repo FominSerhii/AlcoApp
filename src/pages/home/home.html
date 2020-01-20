@@ -31,14 +31,22 @@
         <img class="img" src="assets/imgs/авария.png" height="60" width="350">
       </div>
 
-      <ion-card *ngFor="let card of cards" class="adv-map">
+      <ion-card *ngFor="let place of places" class="adv-map">
         <div class="map-image">
-          <img [src]="card.imageUrl">
+          <img [src]="place.imageUrl">
         </div>
-        <ion-item *ngFor="let place of card.places" (click)="placeTapped(place)">
-          <ion-icon color="subtle" large item-start [name]='place.icon'></ion-icon>
-          <h2>{{place.name}}</h2>
-          <p>{{place.address}}</p>
+        <ion-item>
+          <h2>{{place.title}}</h2>
+          <p>{{place.description}}</p>
+          <agm-map
+              [latitude]="place.location.lat"
+              [longitude]="place.location.lng"
+              [zoom]="10">
+              <agm-marker
+                [latitude]="place.location.lat"
+                [longitude]="place.location.lng">
+              </agm-marker>
+            </agm-map>
         </ion-item>
       </ion-card>
 

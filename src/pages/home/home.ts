@@ -4,7 +4,10 @@ import chartJs from 'chart.js';
 
 import { AddPlacePage } from '../add-place/add-place';
 import { SigninPage } from '../signin/signin';
+import { Place } from '../../models/place';
 import { AuthorizationProvider } from '../../providers/authorization/authorization';
+import { PlacesProvider } from '../../providers/places/places';
+import { PlacePage } from '../place/place';
 
 @Component({
   selector: 'page-home',
@@ -20,13 +23,19 @@ export class HomePage {
   homePage = true;
   chatsPage = false;
   profilePage = false;
-  items = ["Kyle","Eric","Bailey", "Deborah", "Glenn", "Jaco", "Joni", "Gigi"]
+
+  places: Place[] = [];
 
   constructor(public navCtrl: NavController,
               public toastCtrl: ToastController,
               public modalCtrl: ModalController,
-              public authService: AuthorizationProvider) {
+              public authService: AuthorizationProvider,
+              private placeService: PlacesProvider) {
     this.page = "home";
+  }
+
+  ionViewWillEnter() {
+    this.places = this.placeService.loadPlaces();
   }
 
   ngAfterViewInit() {
@@ -65,21 +74,6 @@ export class HomePage {
 
   addPlacePage = AddPlacePage;
 
-  cards = [
-    {
-      imageUrl: 'assets/imgs/advance-card-map-paris.png',
-      name: 'Paris Map',
-      ETA: '26 min',
-      distance: 8.1,
-      places: [
-        {
-          name: 'General Pharmacy',
-          address: '1 Avenue Faux, 75010 Paris, France',
-          icon: 'leaf'
-        }
-      ]
-    },
-  ];
 
   placeTapped(place) {
     alert(place.name + ' was tapped.');
@@ -92,30 +86,6 @@ export class HomePage {
   openModal(pageName) {
     this.modalCtrl.create(pageName, null, { cssClass: 'inset-modal' })
                   .present();
-  }
-
-  onLogout() {
-    this.authService.logout();
-    this.navCtrl.setRoot(SigninPage);
-    console.log('logout')
-  }
-
-  home() {
-    this.homePage = true;
-    this.chatsPage = false;
-    this.profilePage = false;
-  }
-
-  chats() {
-    this.homePage = false;
-    this.chatsPage = true;
-    this.profilePage = false;
-  }
-
-  profile() {
-    this.homePage = false;
-    this.chatsPage = false;
-    this.profilePage = true;
   }
 
 }

@@ -1,3 +1,4 @@
+import { AgmCoreModule } from '@agm/core';
 import { AngularFireModule } from '@angular/fire';
 import { IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -5,14 +6,15 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AgmCoreModule } from '@agm/core';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { HttpClientModule } from '@angular/common/http'; 
+
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { MyApp } from './app.component';
-
 import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
 import { PlacePage } from '../pages/place/place';
@@ -32,6 +34,7 @@ import { SetLocationPage } from '../pages/set-location/set-location';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ChatSelectedPage } from '../pages/chat-selected/chat-selected';
 import { AuthorizationProvider } from '../providers/authorization/authorization';
+import { PlacesProvider } from '../providers/places/places';
 
 export const config = {
     apiKey: "AIzaSyBwDzEQisYfF87ovoqdCxO9zgeu0W3mi38",
@@ -65,6 +68,7 @@ export const config = {
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(config),
     IonicStorageModule.forRoot(),
+    HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAobBv016tRPMQwEQddlo8RSZ0YENEK5q4'
     })
@@ -96,7 +100,10 @@ export const config = {
     FriendsProvider,
     RequestsProvider,
     UserProvider,
-    Geolocation
+    Geolocation,
+    Camera,
+    PlacesProvider,
+    HttpClientModule
   ]
 })
 export class AppModule {}

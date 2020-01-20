@@ -44,7 +44,7 @@ page-home {
 
 		.img {
 			position: absolute;
-			margin-top: -170px;
+			margin-top: -150px;
 			left: auto;
 			right: auto;
 			height: 35%;
@@ -73,6 +73,10 @@ page-home {
 
 		.adv-map {
 			margin-bottom: 0;
+		}
+
+		agm-map {
+			height: 200px;
 		}
 
 	}
