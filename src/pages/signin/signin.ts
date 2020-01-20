@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 import { FormBuilder, FormGroup, FormControl, NgForm, Validators } from '@angular/forms';
 
-// import { TabsPage } from '../tabs/tabs';
+import { TabsPage } from '../tabs/tabs';
 import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
 import { AuthorizationProvider } from '../../providers/authorization/authorization';
@@ -44,7 +44,7 @@ export class SigninPage {
     this.authService.signinUser(user).then((res) => {
       this.signinLoading = false;
 
-      this.navctrl.setRoot(HomePage);
+      this.navctrl.setRoot(TabsPage);
     }, (rej) => {
       this.signinLoading = false;
     });
@@ -56,7 +56,7 @@ export class SigninPage {
   }
 
   goSignupPage() {
-    this.navctrl.setRoot(SignupPage);
+    this.navctrl.setRoot(TabsPage);
   }
 
 }

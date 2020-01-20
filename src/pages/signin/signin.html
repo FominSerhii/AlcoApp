@@ -26,7 +26,7 @@
         <ion-row>
           <ion-col width-50 style="text-align: center;">
             <button class="button-test" type="submit" ion-button round [disabled]="!signinForm.valid" (click)="onSignin()">
-              <span *ngIf="!signinLoading">Увийті</span>
+              <span *ngIf="!signinLoading">Увійти</span>
               <ion-spinner name="dots" color="light" *ngIf="signinLoading"></ion-spinner>
             </button>
           </ion-col>
